@@ -97,6 +97,3 @@ class Scraper:
 
         self.sorted_website_list =  sorted(website_list.items(), key=lambda x: x[1])
         return self.sorted_website_list
-        
-s = Scraper()
-s.parse()
