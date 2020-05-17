@@ -33,7 +33,7 @@ class Scraper:
                 links = soup.findAll('a', {'class': 'mdc-link mds-link mds-link--no-underline'})
 
                 self.morningstar_links.update({link.text:self.sia.polarity_scores(link.text)['compound'] for link in links if link.text[0] != '\n' and len(link.text.split()) > 4}) 
-                pprint(len(self.morningstar_links))
+                
                 pickle_out_morningstar = open('morningstar.pickle', 'wb')
                 pickle.dump(self.morningstar_links, pickle_out_morningstar)
                 pickle_out_morningstar.close()
@@ -96,7 +96,7 @@ class Scraper:
             count += 1
 
         self.sorted_website_list =  sorted(website_list.items(), key=lambda x: x[1])
-        pprint(self.sorted_website_list)
+        return self.sorted_website_list
         
 s = Scraper()
 s.parse()
