@@ -4,6 +4,7 @@ from pprint import pprint
 import pickle
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import time
 
 class Scraper:
     def __init__(self):
@@ -79,7 +80,6 @@ class Scraper:
                 pickle_out_yahoofinance = open('yahoofinance.pickle', 'wb')
                 pickle.dump(self.yahoofinance_links, pickle_out_yahoofinance)
                 pickle_out_yahoofinance.close()
-
 
     def rank(self):
         website_list = {'Morningstar': 0, 'Motley Fool': 0, 'Benzinga': 0, 'SeekingAlpha': 0, 'Yahoo Finance': 0}
