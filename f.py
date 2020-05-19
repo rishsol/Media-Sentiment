@@ -1,4 +1,4 @@
-   pickle_in_morningstar = open('morningstar.pickle', 'rb')
+pickle_in_morningstar = open('morningstar.pickle', 'rb')
         self.morningstar_links = pickle.load(pickle_in_morningstar)
 
         pickle_in_fool = open('fool.pickle', 'rb')
@@ -12,3 +12,10 @@
 
         pickle_in_yahoofinance = open('yahoofinance.pickle', 'rb')
         self.yahoofinance_links = pickle.load(pickle_in_yahoofinance)
+
+        pickle_in_marketwatch = open('marketwatch.pickle', 'rb')
+        self.marketwatch_links = pickle.load(pickle_in_marketwatch)
+
+pickle_out_benzinga = open('benzinga.pickle', 'wb')
+                pickle.dump(self.benzinga_links, pickle_out_benzinga)
+                pickle_out_benzinga.close()

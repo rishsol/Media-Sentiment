@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+
+body {
+    background: black;
+    color: #333333;
+    margin-top: 10rem;
+}
+  
+h1 {
+    color:  black;
+    text-align: center;
+}
+  
+p {
+    color: dimgray;
+    text-align: left;
+    border: 1px solid black;
+}
+
+ul {
+    color: black;
+}
+
+ol {
+    text-align: center;
+    list-style-position: inside;
+    font-size: x-large;
+    color: dimgray;
+    border: 10px solid black;
+}
+</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <body>
-        <h1>Ranking of Sentiment</h1>
-        <p>Sentiment is ranked on a scale between -1 and 1. A -1 indicates an absolute worst case view of the state of the economy, while a 1 is the absolute best case and 0 is completely neutral.</p>
+        <h1>Media Sentiment: Outlook of Various Financial News Sites on the Future Market/Economy</h1>
+        <p>Sentiment is ranked on a scale between -1 and 1.</p>
+        <ul>
+            <li>A -1 indicates an absolute worst case view of the state of the economy.</li>
+            <li>A 1 is an absolute best case view.</li>
+            <li>A 0 is a completely netural outlook.</li>
+        </ul>
         <ol>
             {% for site in websites %}
                 <li> {{ site }} : {{ websites[site]|round(4, 'floor') }} </li>
