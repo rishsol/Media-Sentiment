@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <style>
-
 body {
     background: black;
     color: #333333;
@@ -16,8 +15,9 @@ h1 {
   
 p {
     color: dimgray;
-    text-align: left;
+    text-align: center;
     border: 1px solid black;
+    font-size: large;
 }
 
 ul {
@@ -32,6 +32,7 @@ ol {
     border: 10px solid black;
 }
 </style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -41,12 +42,40 @@ ol {
         <ul>
             <li>A -1 indicates an absolute worst case view of the state of the economy.</li>
             <li>A 1 is an absolute best case view.</li>
-            <li>A 0 is a completely netural outlook.</li>
+            <li>A 0 is a completely neutral outlook.</li>
         </ul>
+        <p>Daily Sentiment</p>
+        <?php
+        if( A > B ){
+        echo '<div class="option-a">';
+        } 
+            else{
+        echo '<div class="option-b">';
+        }
+        ?>
         <ol>
-            {% for site in websites %}
-                <li> {{ site }} : {{ websites[site]|round(4, 'floor') }} </li>
+            {% for site in websites[0] %}
+                <li> {{ site }} : {{ websites[0][site]|round(4, 'floor') }} </li>
             {% endfor %}
+            <style>
+                li::after {
+                    content : '\002B';
+                    color: green;
+                }
+            </style>
+        </ol>
+        <p>Cumulative Sentiment</p>
+        <ol>
+            {% for site in websites[1] %}
+                <li> {{ site }} : {{ websites[1][site]|round(4, 'floor') }} </li>
+            {% endfor %}
+            <style>
+                li::after {
+                    content : '\2212';
+                    color: red;
+                    padding: 10px;
+                }
+            </style>
         </ol>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
