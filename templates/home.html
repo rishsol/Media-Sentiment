@@ -32,6 +32,16 @@ ol {
     color: dimgray;
     border: 10px solid black;
 }
+
+li.green::after {
+    color: green;
+    content: '\002B';
+}
+
+li.red::after {
+    color: red;
+    content: '\2212';
+}
 </style>
 
     <meta charset="utf-8">
@@ -48,47 +58,14 @@ ol {
         <p>Daily Sentiment</p>
         <ol class="daily">
             {% for site in websites[0] %}
-                <li class="daily"> {{ site }} : {{ websites[0][site]|round(4, 'floor') }} </li>
-                {% if websites[0][site] > 0 %}
-                    <style>
-                        li.daily::after {
-                            content : '\002B';
-                            color: green;
-                            padding: 10px;
-                        }
-                    </style>
-                {% else %}
-                    <style>
-                        li.daily::after {
-                            content : '\2212';
-                            color: red;
-                            padding: 10px;
-                        }
-                    </style>
-                {% endif %}
+                <li class="{{ 'green' if websites[0][site] > 0 else 'red' }}"> {{ site }} : {{ websites[0][site]|round(4, 'floor') }} </li>  
             {% endfor %}
         </ol>
         <p>Cumulative Sentiment</p>
         <ol class="cumulative">
             {% for site in websites[1] %}
-                <li class="cumulative"> {{ site }} : {{ websites[1][site]|round(4, 'floor') }} </li>
-                {% if websites[1][site] > 0 %}
-                    <style>
-                        li.cumulative::after {
-                            content : '\002B';
-                            color: green;
-                            padding: 10px;
-                        }
-                    </style>
-                {% else %}
-                    <style>
-                        li.cumulative::after {
-                            content : '\2212';
-                            color: red;
-                            padding: 10px;
-                        }
-                    </style>
-                {% endif %}
+                <li class="{{ 'green' if websites[1][site] > 0 else 'red' }}"> {{ site }} : {{ websites[1][site]|round(4, 'floor') }} </li>
+                
             {% endfor %}
         </ol>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
