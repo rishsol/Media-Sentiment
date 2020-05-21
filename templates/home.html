@@ -18,6 +18,7 @@ p {
     text-align: center;
     border: 1px solid black;
     font-size: large;
+    font: bold;
 }
 
 ul {
@@ -39,43 +40,56 @@ ol {
     <body>
         <h1>Media Sentiment: Outlook of Various Financial News Sites on the Future Market/Economy</h1>
         <p>Sentiment is ranked on a scale between -1 and 1.</p>
-        <ul>
+        <ul class= "description">
             <li>A -1 indicates an absolute worst case view of the state of the economy.</li>
             <li>A 1 is an absolute best case view.</li>
             <li>A 0 is a completely neutral outlook.</li>
         </ul>
         <p>Daily Sentiment</p>
-        <?php
-        if( A > B ){
-        echo '<div class="option-a">';
-        } 
-            else{
-        echo '<div class="option-b">';
-        }
-        ?>
-        <ol>
+        <ol class="daily">
             {% for site in websites[0] %}
-                <li> {{ site }} : {{ websites[0][site]|round(4, 'floor') }} </li>
+                <li class="daily"> {{ site }} : {{ websites[0][site]|round(4, 'floor') }} </li>
+                {% if websites[0][site] > 0 %}
+                    <style>
+                        li.daily::after {
+                            content : '\002B';
+                            color: green;
+                            padding: 10px;
+                        }
+                    </style>
+                {% else %}
+                    <style>
+                        li.daily::after {
+                            content : '\2212';
+                            color: red;
+                            padding: 10px;
+                        }
+                    </style>
+                {% endif %}
             {% endfor %}
-            <style>
-                li::after {
-                    content : '\002B';
-                    color: green;
-                }
-            </style>
         </ol>
         <p>Cumulative Sentiment</p>
-        <ol>
+        <ol class="cumulative">
             {% for site in websites[1] %}
-                <li> {{ site }} : {{ websites[1][site]|round(4, 'floor') }} </li>
+                <li class="cumulative"> {{ site }} : {{ websites[1][site]|round(4, 'floor') }} </li>
+                {% if websites[1][site] > 0 %}
+                    <style>
+                        li.cumulative::after {
+                            content : '\002B';
+                            color: green;
+                            padding: 10px;
+                        }
+                    </style>
+                {% else %}
+                    <style>
+                        li.cumulative::after {
+                            content : '\2212';
+                            color: red;
+                            padding: 10px;
+                        }
+                    </style>
+                {% endif %}
             {% endfor %}
-            <style>
-                li::after {
-                    content : '\2212';
-                    color: red;
-                    padding: 10px;
-                }
-            </style>
         </ol>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
