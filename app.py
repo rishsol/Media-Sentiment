@@ -7,6 +7,7 @@ app = Flask(__name__)
 s = Scraper()
 s.parse()
 websites = s.rank()
+ranked = [list(websites[0])[0], list(websites[0])[6]]
 
 def repeat():
     s.parse()
@@ -15,7 +16,7 @@ def repeat():
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', websites=websites)
+    return render_template('home.html', websites=websites, ranked=ranked)
 
 if __name__ == '__main__':
     scheduler = APScheduler()
