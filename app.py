@@ -20,6 +20,6 @@ def home():
 
 if __name__ == '__main__':
     scheduler = APScheduler()
-    scheduler.add_job(func=repeat, trigger='interval', id='repeat', seconds=86400)
+    scheduler.add_job(func=repeat, trigger='interval', id='repeat', seconds=86400) #repeat everyday
     scheduler.start()
     app.run(debug=True)
