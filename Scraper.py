@@ -75,10 +75,11 @@ class Scraper:
                 pickle_out_benzinga.close()
 
             if i == 3:
-                links = soup.findAll('li', {'class': 'article-elem'})
+                links = soup.findAll('div', {'class': '_1-r1S'})
 
                 self.seekingalpha_daily.update({link.text : self.sia.polarity_scores(link.text)['compound'] for link in links if len(link.text.split()) > 4}) 
                 self.seekingalpha_links.update(self.seekingalpha_daily)
+                print(self.seekingalpha_daily)
 
                 pickle_out_seekingalpha = open('pickle/seekingalpha.pickle', 'wb')
                 pickle.dump(self.seekingalpha_links, pickle_out_seekingalpha)
@@ -90,6 +91,7 @@ class Scraper:
 
                 self.yahoofinance_daily.update({link.text : self.sia.polarity_scores(link.text)['compound'] for link in links if len(link.text.split()) > 4}) 
                 self.yahoofinance_links.update(self.yahoofinance_daily)
+
 
                 pickle_out_yahoofinance = open('pickle/yahoofinance.pickle', 'wb')
                 pickle.dump(self.yahoofinance_links, pickle_out_yahoofinance)
@@ -153,3 +155,7 @@ class Scraper:
         self.sorted_website_list_daily = sorted(website_list_daily.items(), key=lambda x: x[1], reverse=True)
 
         return [dict(self.sorted_website_list_daily), dict(self.sorted_website_list_cumulative)]
+
+
+s = Scraper()
+s.parse()
