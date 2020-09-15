@@ -1,5 +1,5 @@
 # Media-Sentiment
-Media companies are notorious for their often exaggerated headlines meant to capture the attention of users. During the height of the 2019-2020 coronavirus pandemic and later the police brutality and race riots, I wanted to determine if media headlines have been hyperbolized even more so. 
+Media companies are notorious for their often exaggerated headlines meant to capture the attention of users. During the height of the 2019-2020 coronavirus pandemic and later the police brutality and race riots, I wanted to determine if media headlines have been exaggerated even more so. 
 
 Focusing only on financial news websites, I used Python's Natural Language Toolkit (NLTK) to gauge the sentiment intensity of the headlines of 7 particular sites. (Python's NLTK measures sentiment on a scale of -1 to 1, with a -1 indicating the most negative sentiment and a 1 indicating the most positive). Headlines were scraped daily and a daily and cumulative list were created on the webpage.
 
